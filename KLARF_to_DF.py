@@ -8,9 +8,6 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 #%% Get Defect List from KLARF file
-klarfpath = r"\\amat.com\folders\Israel\PL_Storage\BF\Users\Girish@PLStorage\For Marcelo\FullMapKLARF_NL_V1_2.001"
-klarfpath = r"C:\Users\GAjmera121451\Desktop\Field Support\LETI Accuracy\UV_Acc_test\ADR_NO_GDR.001"
-klarfpath = r"C:\Users\GAjmera121451\Desktop\Field Support\LETI Accuracy\UV_Acc_test\ADR_with_GDR.001"
 
 def KLARF_to_DF(klarfpath):
 
@@ -127,34 +124,3 @@ k = KLARF_to_DF(klarfpath)
 DefectList = k[0]
 DefectList = DefectList.loc[(DefectList!=0).any(axis=1)]
 DefectList.to_csv('WithGDR.csv')
-#import os
-#from PIL import Image
-#import matplotlib.pyplot as plt
-#
-#klarfpath = r"\\amat.com\folders\Israel\PL_Storage\BF\DEMOS\YMTC_CH_Sept_19\YMTC_CH_FullWafer_Unified.001"
-#defectlocation_df,otflocation_df = KLARF_to_DF(klarfpath)
-#
-#folderpath, klarffilename = os.path.split(klarfpath)
-#TiffFileName = folderpath + "//" + klarffilename[:-3] +"I01"
-#
-#
-#
-#otfimage = Image.open(TiffFileName,"r")
-#otfimage_np = np.zeros((len(otflocation_df),otfimage.width,otfimage.height),dtype = np.uint8)
-#
-## Access a specific Image
-#DefectID = 345
-#ImageType = 'GF Previous'
-#ImageID = int(otflocation_df.loc[(otflocation_df['DEFECTID'] == DefectID) & (otflocation_df['IMAGECODE'] == ImageType),'IMAGEID'].values[0])
-#
-#otfimage.seek(ImageID)
-#otfimage_np[ImageID,:,:] = np.asarray(otfimage)
-#plt.imshow(otfimage_np[ImageID,:,:])
-
-#
-
-
-
-
-
-
